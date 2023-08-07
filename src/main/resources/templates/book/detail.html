@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
     <div>
@@ -19,11 +21,32 @@
         <label>대출 가능 권 수</label>
         <p th:text="${book.stock}"></p>
 
-        <form th:action="@{/borrow/book/{bookId}(bookId = ${book.id})}">
-            <label>아이디를 입력해주세요.</label>
-            <input type="text" name="username">
-            <input type="submit" value="대여하기">
-        </form>
+        <label>아이디를 입력해주세요.</label>
+        <input type="text" name="username" id="username">
+        <button id="borrowBtn">대여하기</button>
     </div>
 </body>
+
+<script type="text/javascript">
+    const bookId = '[[${book.id}]]';
+    const button = document.getElementById("borrowBtn");
+
+    button.addEventListener("click", () => {
+        let username = document.getElementById("username").value;
+
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/borrow/book",
+            contentType: "application/json",
+            data: JSON.stringify({
+                bookId : bookId,
+                username : username
+            })
+        }).done(function (data) {
+            alert(data.message);
+        })
+    })
+</script>
+
 </html>
