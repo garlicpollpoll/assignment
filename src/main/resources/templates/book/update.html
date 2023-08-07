@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <form th:action="@{/book/admin/update/{bookId}(bookId = ${book.id})}" method="post" enctype="multipart/form-data" th:object="${book}">
+            <label>이미지</label>
+            <img th:src="${book.url}" width="100" height="100">
+            <input type="file" id="input-image" name="image">
+            <label>책이름</label>
+            <input type="text" th:value="${book.bookName}" name="bookName">
+            <label>출판사</label>
+            <input type="text" th:value="${book.publisher}" name="publisher">
+            <label>ISBN</label>
+            <input type="text" th:value="${book.ISBN}" name="ISBN">
+            <label>저자</label>
+            <input type="text" th:value="${book.author}" name="author">
+            <label>재고</label>
+            <input type="number" th:value="${book.stock}" name="stock">
+            <input type="submit" value="수정하기">
+        </form>
+    </div>
+</body>
+</html>

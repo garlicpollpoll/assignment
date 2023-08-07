@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <a th:each="book : ${books}" th:href="@{/book/admin/update/{bookId}(bookId = ${book.id})}">
+            <label>이미지</label>
+            <img th:src="${book.url}">
+            <label>책이름</label>
+            <p th:text="${book.bookName}"></p>
+            <label>저자</label>
+            <p th:text="${book.author}"></p>
+            <label>출판사</label>
+            <p th:text="${book.publisher}"></p>
+            <label>ISBN</label>
+            <p th:text="${book.ISBN}"></p>
+            <label>대출 가능 권 수</label>
+            <p th:text="${book.stock}"></p>
+        </a>
+    </div>
+</body>
+</html>

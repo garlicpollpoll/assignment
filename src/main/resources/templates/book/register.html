@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <form action="/book/admin/register" method="post" enctype="multipart/form-data">
+            <label>이미지</label>
+            <input type="file" id="input-image" name="image">
+            <img id="preview-image" src="" style="width: 200px; height: 200px; display: none;">
+            <label>책이름</label>
+            <input type="text" name="bookName">
+            <label>출판사</label>
+            <input type="text" name="publisher">
+            <label>ISBN</label>
+            <input type="text" name="ISBN">
+            <label>저자</label>
+            <input type="text" name="author">
+            <label>재고</label>
+            <input type="number" name="stock">
+            <input type="submit" value="도서 등록">
+        </form>
+    </div>
+</body>
+<!-- 이미지 미리보기 -->
+<script type="text/javascript">
+    function readImage(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = e => {
+                const previewImage = document.getElementById("preview-image");
+                previewImage.src = e.target.result;
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    const inputImage = document.getElementById("input-image");
+    inputImage.addEventListener("change", e => {
+        document.getElementById("preview-image").style.display = 'block';
+        readImage(e.target);
+    })
+</script>
+</html>

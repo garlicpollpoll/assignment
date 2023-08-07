@@ -1,0 +1,52 @@
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+  batch:
+    jdbc:
+      initialize-schema: always
+  datasource:
+    url: jdbc:mysql://localhost:3306/sakila?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    open-in-view: false
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  messages:
+    basename: errors
+  main:
+    allow-bean-definition-overriding: true
+
+# TODO AWS accessKey, secretKey 바꿔야함
+cloud:
+  aws:
+    credentials:
+      accessKey: AKIASZNLEKKPEYCUXU5N
+      secretKey: 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
+    s3:
+      bucket: ks-capston
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+server:
+  shutdown: graceful
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
+
