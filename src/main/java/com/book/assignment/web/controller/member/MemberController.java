@@ -23,6 +23,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -84,7 +85,7 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public String loginPost(@Validated @ModelAttribute("login") MemberLoginDto dto, BindingResult bindingResult) {
+    public String loginPost(@Validated @ModelAttribute("login") MemberLoginDto dto, BindingResult bindingResult, HttpSession session) {
         Members findMember = memberRepository.findByUsername(dto.getUsername()).orElse(null);
 
         if (findMember == null) {
@@ -100,6 +101,8 @@ public class MemberController {
         Authentication authentication = new UsernamePasswordAuthenticationToken(principal, "", authorities);
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        session.setAttribute("loginId", findMember.getUsername());
         return "redirect:/";
     }
 }

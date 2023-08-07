@@ -26,15 +26,25 @@ public class Borrow {
 
     private LocalDateTime borrowDate;
     private LocalDateTime returnDate;
+    private int remainDate;
 
     @Enumerated(value = EnumType.STRING)
     private IsBorrow isBorrow;
 
-    public Borrow(Members members, Book book, LocalDateTime borrowDate, LocalDateTime returnDate, IsBorrow isBorrow) {
+    public Borrow(Members members, Book book, LocalDateTime borrowDate, LocalDateTime returnDate, IsBorrow isBorrow, int remainDate) {
         this.members = members;
         this.book = book;
         this.borrowDate = borrowDate;
         this.returnDate = returnDate;
+        this.isBorrow = isBorrow;
+        this.remainDate = remainDate;
+    }
+
+    public void setRemainDate(int remainDate) {
+        this.remainDate = remainDate;
+    }
+
+    public void setIsBorrow(IsBorrow isBorrow) {
         this.isBorrow = isBorrow;
     }
 }

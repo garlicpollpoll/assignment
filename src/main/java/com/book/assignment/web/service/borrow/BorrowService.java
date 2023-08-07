@@ -20,7 +20,7 @@ public class BorrowService {
     @Transactional
     public void borrow(Members member, Book book) {
         LocalDateTime now = LocalDateTime.now();
-        Borrow borrow = new Borrow(member, book, now, now.plusDays(7), IsBorrow.BORROW);
+        Borrow borrow = new Borrow(member, book, now, now.plusDays(7), IsBorrow.BORROW, 7);
         book.setStock(book.getStock() - 1);
         borrowRepository.save(borrow);
     }
