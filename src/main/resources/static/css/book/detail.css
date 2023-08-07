@@ -1,0 +1,43 @@
+.image-div {
+    display: inline-block;
+}
+
+.image-wrap {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.detail-wrap {
+    display: inline-block;
+    padding: 30px;
+}
+
+.detail-wrap label {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.title {
+    font-size: 23px;
+}
+
+.author {
+    font-size: 21px;
+}
+
+.stock {
+    color: black;
+    font-weight: 600;
+}
+
+.etc {
+    color: #aaa;
+}
+
+.borrow-wrap {
+    text-align: center;
+}

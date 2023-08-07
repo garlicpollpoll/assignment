@@ -34,7 +34,7 @@ public class BookAdminController {
     @GetMapping("/register")
     public String register(Model model) {
         BookRegisterDto dto = new BookRegisterDto();
-        model.addAttribute("book", dto);
+        model.addAttribute("register", dto);
         return "book/register";
     }
 

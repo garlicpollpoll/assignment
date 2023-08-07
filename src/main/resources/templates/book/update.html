@@ -3,25 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+    <script src="/js/bootstrap.js"></script>
+
+    <link rel="stylesheet" href="/css/index/index.css">
+    <link rel="stylesheet" href="/css/admin/register.css">
 </head>
 <body>
-    <div>
-        <form th:action="@{/book/admin/update/{bookId}(bookId = ${book.id})}" method="post" enctype="multipart/form-data" th:object="${book}">
-            <label>이미지</label>
-            <img th:src="${book.url}" width="100" height="100">
-            <input type="file" id="input-image" name="image">
-            <label>책이름</label>
-            <input type="text" th:value="${book.bookName}" name="bookName">
-            <label>출판사</label>
-            <input type="text" th:value="${book.publisher}" name="publisher">
-            <label>ISBN</label>
-            <input type="text" th:value="${book.ISBN}" name="ISBN">
-            <label>저자</label>
-            <input type="text" th:value="${book.author}" name="author">
-            <label>재고</label>
-            <input type="number" th:value="${book.stock}" name="stock">
-            <input type="submit" value="수정하기">
-        </form>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">도서 대출 서비스</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+            </ul>
+            <form class="d-flex" role="search" action="/search" method="post">
+                <input name="bookName" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">search</button>
+            </form>
+        </div>
     </div>
+</nav>
+
+<div>
+    <ul class="header">
+        <li><a href="/join">회원가입</a></li>
+        <li><a href="/login">로그인</a></li>
+        <li><a href="/borrow/mine">내 대여</a></li>
+        <li><a href="/book/admin">도서관리</a></li>
+    </ul>
+</div>
+
+<div class="register-wrap">
+    <form th:action="@{/book/admin/update/{bookId}(bookId = ${book.id})}" method="post" enctype="multipart/form-data" th:object="${book}">
+        <div class="label-wrap">
+            <label>이미지</label>
+        </div>
+        <div class="file-wrap">
+            <input type="file" id="input-image" name="image" class="btn btn-dark">
+            <img th:src="${book.url}" width="100" height="100" src="" style="width: 100px; height: 100px; margin: 0 auto; display: block;">
+        </div>
+
+        <div class="label-wrap">
+            <label>책이름</label>
+        </div>
+        <input type="text" th:value="${book.bookName}" name="bookName">
+        <div class="field-error">
+
+        </div>
+
+        <div class="label-wrap">
+            <label>출판사</label>
+        </div>
+        <input type="text" th:value="${book.publisher}" name="publisher">
+        <div class="field-error">
+
+        </div>
+
+        <div class="label-wrap">
+            <label>ISBN</label>
+        </div>
+        <input type="text" th:value="${book.ISBN}" name="ISBN">
+        <div class="field-error">
+
+        </div>
+
+        <div class="label-wrap">
+            <label>저자</label>
+        </div>
+        <input type="text" th:value="${book.author}" name="author">
+        <div class="field-error">
+
+        </div>
+
+        <div class="label-wrap">
+            <label>재고</label>
+        </div>
+        <input type="number" th:value="${book.stock}" name="stock">
+
+        <div class="submit-btn">
+            <input type="submit" value="수정하기">
+        </div>
+    </form>
+</div>
 </body>
 </html>

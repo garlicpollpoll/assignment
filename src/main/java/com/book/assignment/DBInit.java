@@ -19,8 +19,11 @@ public class DBInit {
     @PostConstruct
     public void init() {
         String encode = encoder.encode("123");
+        String encode1 = encoder.encode("1234");
         Members member = new Members("어드민", "admin", encode, MemberRole.ROLE_ADMIN);
+        Members member1 = new Members("일반회원", "ks3254", encode1, MemberRole.ROLE_MEMBER);
 
         memberRepository.save(member);
+        memberRepository.save(member1);
     }
 }

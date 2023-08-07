@@ -3,23 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+    <script src="/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/css/index/index.css">
 </head>
 <body>
-    <div>
-        <a th:each="book : ${books}" th:href="@{/book/admin/update/{bookId}(bookId = ${book.id})}">
-            <label>이미지</label>
-            <img th:src="${book.url}">
-            <label>책이름</label>
-            <p th:text="${book.bookName}"></p>
-            <label>저자</label>
-            <p th:text="${book.author}"></p>
-            <label>출판사</label>
-            <p th:text="${book.publisher}"></p>
-            <label>ISBN</label>
-            <p th:text="${book.ISBN}"></p>
-            <label>대출 가능 권 수</label>
-            <p th:text="${book.stock}"></p>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">도서 대출 서비스</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+            </ul>
+            <form class="d-flex" role="search" action="/search" method="post">
+                <input name="bookName" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div>
+    <ul class="header">
+        <li><a href="/join">회원가입</a></li>
+        <li><a href="/login">로그인</a></li>
+        <li><a href="/borrow/mine">내 대여</a></li>
+        <li><a href="/book/admin">도서관리</a></li>
+    </ul>
+</div>
+
+<div class="div-wrap">
+    <div class="div-container">
+        <a th:each="book : ${books}" th:href="@{/book/admin/update/{bookId}(bookId = ${book.id})}" href="/home" class="card-wrap">
+            <div class="card" style="width: 18rem;">
+                <img src="image/8080 그린 버전.PNG" class="card-img-top" alt="..." th:src="${book.url}">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${book.bookName}">토비의 스프링</h5>
+                    <p class="card-text" th:text="${book.author}" style="font-weight: 600;">이일민</p>
+                    <p class="cart-text" th:text="${book.publisher}">에이콘</p>
+                    <p th:text="|대출 가능 권 수 : ${book.stock}|">대출 가능 권 수 : 33</p>
+                    <p th:text="|ISBN : ${book.ISBN}|">ISBN : 123456789</p>
+                </div>
+            </div>
         </a>
     </div>
+</div>
 </body>
 </html>

@@ -1,0 +1,41 @@
+.join-wrap {
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    padding-top: 150px;
+    background-color: #eee;
+    border-radius: 50px;
+}
+
+.label-wrap {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+}
+
+.btn-wrap {
+    text-align: center;
+}
+
+.center {
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hidden-btn {
+    width: 100px;
+    display: inline-block;
+}
+
+.input-field {
+    margin: 20px 0;
+}
+
+.field-error {
+    color: red;
+}
+
+.global-error {
+    margin: 20px 0;
+}

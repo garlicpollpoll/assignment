@@ -1,0 +1,25 @@
+.my-borrow {
+    width: 800px;
+    height: 150px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-borrow-detail {
+    display: inline-block;
+    overflow: auto;
+    width: 150px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.my-borrow-image {
+    display: inline-block;
+    overflow: auto;
+}
+
+.remain {
+    color: red;
+}

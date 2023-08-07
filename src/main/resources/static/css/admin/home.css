@@ -1,0 +1,21 @@
+.home-wrap {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.admin-wrap {
+    display: inline-block;
+    width: 20rem;
+    height: 200px;
+    margin: 200px auto;
+    text-align: center;
+    padding-top: 50px;
+    background-color: cornflowerblue;
+    border-radius: 50px;
+}
+
+.body-wrap {
+    height: 100%;
+    color: white;
+}

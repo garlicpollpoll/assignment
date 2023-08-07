@@ -1,0 +1,10 @@
+.form-wrap {
+    background-color: cornflowerblue;
+    width: 600px;
+    height: 200px;
+    margin: 20px auto;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

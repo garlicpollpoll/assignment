@@ -1,0 +1,26 @@
+.register-wrap {
+    width: 600px;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #eee;
+    border-radius: 50px;
+    padding: 50px 0;
+}
+
+.label-wrap {
+    display: inline-block;
+    width: 100px;
+}
+
+.field-error {
+    height: 30px;
+}
+
+.file-wrap {
+    margin-bottom: 30px;
+}
+
+.submit-btn {
+    margin-top: 30px;
+}

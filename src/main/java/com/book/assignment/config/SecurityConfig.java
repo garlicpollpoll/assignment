@@ -27,9 +27,9 @@ public class SecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 .and()
                 .authorizeRequests().antMatchers(
-                        "/", "/login", "/join", "/check/*"
+                        "/", "/login", "/join", "/check/**", "/search", "/css/**", "/image/**", "/js/**"
                 ).permitAll()
-                .antMatchers("/book/admin/*").hasAnyRole("ADMIN")
+                .antMatchers("/book/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/")

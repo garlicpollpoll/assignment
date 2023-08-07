@@ -3,22 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+    <script src="/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/css/index/index.css">
+    <link rel="stylesheet" href="/css/book/my_borrow.css">
 </head>
 <body>
-    <div th:each="myBook : ${myBooks}">
-        <img th:src="${myBook.book.url}">
-        <label>책 이름</label>
-        <p th:text="${myBook.book.bookName}"></p>
-        <label>저자</label>
-        <p th:text="${myBook.book.author}"></p>
-        <label>대여일</label>
-        <p th:text="${myBook.borrowDate}"></p>
-        <label>반납일</label>
-        <p th:text="${myBook.returnDate}"></p>
-        <label>남은 일 수</label>
-        <p th:text="${myBook.remainDate}"></p>
-        <a th:href="@{/borrow/return/{bookId}(bookId = ${myBook.book.id})}" onclick="click()">반납하기</a>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">도서 대출 서비스</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+            </ul>
+            <form class="d-flex" role="search" action="/search" method="post">
+                <input name="bookName" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">search</button>
+            </form>
+        </div>
     </div>
+</nav>
+
+<div>
+    <ul class="header">
+        <li><a href="/join">회원가입</a></li>
+        <li><a href="/login">로그인</a></li>
+        <li><a href="/borrow/mine">내 대여</a></li>
+        <li><a href="/book/admin">도서관리</a></li>
+    </ul>
+</div>
+
+<div th:each="myBook : ${myBooks}" class="my-borrow">
+    <div class="my-borrow-image">
+        <img th:src="${myBook.book.url}" src="" width="100" height="100">
+    </div>
+    <div class="my-borrow-detail">
+        <p th:text="${myBook.book.bookName}">토비의 스프링</p>
+        <p th:text="${myBook.book.author}">이일민</p>
+    </div>
+    <div class="my-borrow-detail">
+        <label>대여일</label>
+        <p th:text="${myBook.borrowDate}">2023-08-07 10:15:07.295034000</p>
+        <label>반납일</label>
+        <p th:text="${myBook.returnDate}">2023-08-15 10:15:07.295034000</p>
+    </div>
+    <div class="remain my-borrow-detail">
+        <label>남은 일 수</label>
+        <p th:text="${myBook.remainDate}">7</p>
+    </div>
+    <div class="my-borrow-detail">
+        <a th:href="@{/borrow/return/{bookId}(bookId = ${myBook.book.id})}" class="btn btn-primary">반납하기</a>
+    </div>
+</div>
 </body>
 
 </html>

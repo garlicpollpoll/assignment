@@ -5,26 +5,65 @@
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+    <script src="/js/bootstrap.js"></script>
+
+    <link rel="stylesheet" href="/css/index/index.css">
+    <link rel="stylesheet" href="/css/book/detail.css">
 </head>
 <body>
-    <div>
-        <label>이미지</label>
-        <img th:src="${book.url}">
-        <label>책이름</label>
-        <p th:text="${book.bookName}"></p>
-        <label>저자</label>
-        <p th:text="${book.author}"></p>
-        <label>출판사</label>
-        <p th:text="${book.publisher}"></p>
-        <label>ISBN</label>
-        <p th:text="${book.ISBN}"></p>
-        <label>대출 가능 권 수</label>
-        <p th:text="${book.stock}"></p>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">도서 대출 서비스</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
+            </ul>
+            <form class="d-flex" role="search" action="/search" method="post">
+                <input name="bookName" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div>
+    <ul class="header">
+        <li><a href="/join">회원가입</a></li>
+        <li><a href="/login">로그인</a></li>
+        <li><a href="/borrow/mine">내 대여</a></li>
+        <li><a href="/book/admin">도서관리</a></li>
+    </ul>
+</div>
+
+<div class="container">
+    <div class="image-div">
+        <div class="image-wrap">
+            <img src=".." th:src="${book.url}" width="200" height="200">
+        </div>
+    </div>
+    <div class="detail-wrap">
+        <label>책이름</label>
+        <p th:text="${book.bookName}" class="title">토비의 스프링</p>
+        <label>저자</label>
+        <p th:text="${book.author}" class="author">이일민</p>
+        <label>출판사</label>
+        <p th:text="${book.publisher}" class="etc">에이콘</p>
+        <label>ISBN</label>
+        <p th:text="${book.ISBN}" class="etc">123456789</p>
+        <label>대출 가능 권 수</label>
+        <p th:text="${book.stock}" class="stock">13</p>
+    </div>
+
+    <div class="borrow-wrap">
         <label>아이디를 입력해주세요.</label>
         <input type="text" name="username" id="username">
         <button id="borrowBtn">대여하기</button>
     </div>
+</div>
 </body>
 
 <script type="text/javascript">

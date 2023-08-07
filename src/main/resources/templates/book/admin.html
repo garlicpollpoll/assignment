@@ -3,11 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+    <script src="/js/bootstrap.js"></script>
+
+    <link rel="stylesheet" href="/css/index/index.css">
+    <link rel="stylesheet" href="/css/admin/home.css">
 </head>
 <body>
-    <div>
-        <a href="/book/admin/register">도서등록</a>
-        <a href="/book/admin/update">도서수정</a>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">도서 대출 서비스</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+            </ul>
+            <form class="d-flex" role="search" action="/search" method="post">
+                <input name="bookName" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">search</button>
+            </form>
+        </div>
     </div>
+</nav>
+
+<div>
+    <ul class="header">
+        <li><a href="/join">회원가입</a></li>
+        <li><a href="/login">로그인</a></li>
+        <li><a href="/borrow/mine">내 대여</a></li>
+        <li><a href="/book/admin">도서관리</a></li>
+    </ul>
+</div>
+
+<div class="body-wrap">
+    <div class="home-wrap">
+        <div class="admin-wrap">
+            <p>도서등록</p>
+            <a href="/book/admin/register" class="btn btn-primary">Go!</a>
+        </div>
+        <div class="admin-wrap">
+            <p>도서수정</p>
+            <a href="/book/admin/update" class="btn btn-primary">Go!</a>
+        </div>
+    </div>
+</div>
 </body>
 </html>

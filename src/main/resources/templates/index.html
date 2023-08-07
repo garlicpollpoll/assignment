@@ -3,24 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+    <script src="/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/css/index/index.css">
 </head>
 <body>
-    <div>
-        <a href="/join">회원가입</a>
-        <a href="/login">로그인</a>
-        <a href="/borrow/mine">내 대여</a>
-        <a href="/book/admin">도서관리</a>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">도서 대출 서비스</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+            </ul>
+            <form class="d-flex" role="search" action="/search" method="post">
+                <input name="bookName" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">search</button>
+            </form>
+        </div>
     </div>
-    <div>
-        <a th:each="book : ${books}" th:href="@{/book/detail/{id}(id = ${book.id})}">
-            <div>
-                <img th:src="${book.url}" width="100" height="100">
-                <label th:text="${book.bookName}"></label>
-                <label th:text="${book.author}"></label>
-                <label th:text="${book.publisher}"></label>
-                <label th:text="|대출 가능 권 수 : ${book.stock}|"></label>
+</nav>
+
+<div>
+    <ul class="header">
+        <li><a href="/join">회원가입</a></li>
+        <li><a href="/login">로그인</a></li>
+        <li><a href="/borrow/mine">내 대여</a></li>
+        <li><a href="/book/admin">도서관리</a></li>
+    </ul>
+</div>
+
+<div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="image/book1.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="image/book2.jpg" class="d-block w-100" alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+<div class="div-wrap">
+    <div class="div-container">
+        <a th:each="book : ${books}" th:href="@{/book/detail/{id}(id = ${book.id})}" href="/home" class="card-wrap">
+            <div class="card" style="width: 18rem;">
+                <img src="image/8080 그린 버전.PNG" class="card-img-top" alt="..." th:src="${book.url}">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${book.bookName}">토비의 스프링</h5>
+                    <p class="card-text" th:text="${book.author}">이일민</p>
+                    <p th:text="|대출 가능 권 수 : ${book.stock}|">대출 가능 권 수 : 33</p>
+                </div>
             </div>
         </a>
     </div>
+</div>
 </body>
 </html>

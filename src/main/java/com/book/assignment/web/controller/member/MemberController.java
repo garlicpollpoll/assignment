@@ -58,6 +58,7 @@ public class MemberController {
             return "member/join";
         }
         memberService.join(dto);
+        SecurityContextHolder.clearContext();
         isCheckDuplicateLoginId = false;
         return "redirect:/login";
     }

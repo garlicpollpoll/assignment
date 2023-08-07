@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
     <script src="/js/bootstrap.js"></script>
-
     <link rel="stylesheet" href="/css/index/index.css">
-    <link rel="stylesheet" href="/css/book/find_book.css">
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -38,27 +37,20 @@
     </ul>
 </div>
 
-<div>
-    <div class="find-by-name form-wrap">
-        <form action="/book/find_by_book_name" method="post">
-            <input type="text" name="bookName">
-            <input type="submit" value="책이름으로 검색" class="btn btn-primary">
-        </form>
-    </div>
-
-    <div class="find-by-isbn form-wrap">
-        <form action="/book/find_by_ISBN" method="post">
-            <input type="text" name="ISBN">
-            <input type="submit" value="ISBN으로 검색" class="btn btn-primary">
-        </form>
-    </div>
-
-    <div class="find-by-id form-wrap">
-        <form action="/book/find_by_book_id" method="post">
-            <input type="number" name="bookId">
-            <input type="submit" value="책ID로 검색" class="btn btn-primary">
-        </form>
+<div class="div-wrap">
+    <div class="div-container">
+        <a th:each="book : ${books}" th:href="@{/book/detail/{id}(id = ${book.id})}" href="/home" class="card-wrap">
+            <div class="card" style="width: 18rem;">
+                <img src="image/8080 그린 버전.PNG" class="card-img-top" alt="..." th:src="${book.url}">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${book.bookName}">토비의 스프링</h5>
+                    <p class="card-text" th:text="${book.author}">이일민</p>
+                    <p th:text="|대출 가능 권 수 : ${book.stock}|">대출 가능 권 수 : 33</p>
+                </div>
+            </div>
+        </a>
     </div>
 </div>
+
 </body>
 </html>
