@@ -12,7 +12,7 @@ import javax.annotation.PostConstruct;
 @Component
 @RequiredArgsConstructor
 public class DBInit {
-
+/*
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder encoder;
 
@@ -25,5 +25,5 @@ public class DBInit {
 
         memberRepository.save(member);
         memberRepository.save(member1);
-    }
+    } */
 }
