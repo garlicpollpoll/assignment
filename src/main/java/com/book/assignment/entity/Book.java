@@ -32,4 +32,8 @@ public class Book {
         this.stock = stock;
         this.url = url;
     }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
 }

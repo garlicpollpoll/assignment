@@ -39,14 +39,22 @@ public class BorrowController {
     @PostMapping("/book")
     @ResponseBody
     @Transactional
-    public Map<String, String> borrowBook(@RequestBody BorrowFormDto dto) {
+    public Map<String, String> borrowBook(@RequestBody BorrowFormDto dto, HttpSession session) {
         Map<String, String> map = new HashMap<>();
         boolean canBorrow = true;
+
+        String loginId = (String) session.getAttribute("loginId");
+
         Members findMember = memberRepository.findByUsername(dto.getUsername()).orElse(null);
         Book findBook = bookRepository.findById(dto.getBookId()).orElseThrow(() -> new NotFoundBook("해당하는 책을 찾을 수 없습니다."));
 
         if (findMember == null) {
             map.put("message", "해당하는 회원이 없습니다.");
+            canBorrow = false;
+        }
+
+        if (findMember != null && !findMember.getUsername().equals(loginId)) {
+            map.put("message", "자신의 아이디로 대여를 진행해주세요.");
             canBorrow = false;
         }
 
@@ -94,7 +102,9 @@ public class BorrowController {
         }
 
         if (isLogin) {
-            Borrow findMyBorrow = borrowRepository.findMyBook(loginId, bookId).orElseThrow(() -> new NotFoundBook("해당하는 책을 찾을 수 없습니다."));
+            Borrow findMyBorrow = borrowRepository.findMyBook(loginId, bookId, IsBorrow.BORROW).orElseThrow(() -> new NotFoundBook("해당하는 책을 찾을 수 없습니다."));
+            Book findBook = bookRepository.findById(bookId).orElseThrow(() -> new NotFoundBook("해당하는 책을 찾을 수 없습니다."));
+            findBook.setStock(findBook.getStock() + 1);
             findMyBorrow.setIsBorrow(IsBorrow.RETURN);
         }
 

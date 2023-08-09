@@ -47,9 +47,9 @@
     </div>
     <div class="my-borrow-detail">
         <label>대여일</label>
-        <p th:text="${myBook.borrowDate}">2023-08-07 10:15:07.295034000</p>
+        <p th:text="${myBook.borrowDate.toString().substring(0, 10)}">2023-08-07 10:15:07.295034000</p>
         <label>반납일</label>
-        <p th:text="${myBook.returnDate}">2023-08-15 10:15:07.295034000</p>
+        <p th:text="${myBook.returnDate.toString().substring(0, 10)}">2023-08-15 10:15:07.295034000</p>
     </div>
     <div class="remain my-borrow-detail">
         <label>남은 일 수</label>
