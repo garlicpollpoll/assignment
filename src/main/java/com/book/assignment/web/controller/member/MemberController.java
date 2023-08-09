@@ -28,6 +28,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Controller
@@ -50,6 +51,7 @@ public class MemberController {
     @PostMapping("/join")
     public String joinPost(@Validated @ModelAttribute("join") MemberJoinDto dto, BindingResult bindingResult) {
         log.info("isCheckDuplicateLoginId : {}", isCheckDuplicateLoginId);
+
         if (!isCheckDuplicateLoginId) {
             bindingResult.reject("PleaseCheckLoginIdDuplicate");
             return "member/join";
@@ -57,6 +59,15 @@ public class MemberController {
         if (bindingResult.hasErrors()) {
             return "member/join";
         }
+
+        String pattern = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$";
+        boolean isMatch = Pattern.matches(pattern, dto.getLoginPw());
+
+        if (isMatch) {
+            bindingResult.reject("PasswordPatternNotMatch");
+            return "member/join";
+        }
+
         memberService.join(dto);
         SecurityContextHolder.clearContext();
         isCheckDuplicateLoginId = false;
@@ -68,6 +79,7 @@ public class MemberController {
     public Map<String, String> checkLoginId(@RequestBody CheckLoginIdDto dto) {
         boolean isDuplicate = memberService.checkDuplicateLoginId(dto.getLoginId());
         Map<String, String> map = new HashMap<>();
+
         if (isDuplicate) {
             map.put("message", "사용가능한 아이디입니다.");
             isCheckDuplicateLoginId = true;
@@ -75,6 +87,11 @@ public class MemberController {
         else {
             map.put("message", "중복된 아이디입니다.");
         }
+
+        if (dto.getLoginId().isBlank() || dto.getLoginId().isEmpty()) {
+            map.put("message", "빈 칸은 사용할 수 없습니다.");
+        }
+
         return map;
     }
 
