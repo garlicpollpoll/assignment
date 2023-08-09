@@ -20,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -81,7 +82,7 @@ public class BorrowController {
             myBookList = borrowRepository.findMyBorrow(loginId, IsBorrow.BORROW);
 
             for (Borrow borrow : myBookList) {
-                Period between = Period.between(borrow.getBorrowDate().toLocalDate(), borrow.getReturnDate().toLocalDate());
+                Period between = Period.between(LocalDateTime.now().toLocalDate(), borrow.getReturnDate().toLocalDate());
                 borrow.setRemainDate(between.getDays());
             }
         }
