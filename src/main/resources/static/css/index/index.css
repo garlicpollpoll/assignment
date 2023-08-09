@@ -7,7 +7,7 @@ p {
     margin: 0px;
 }
 
-li {
+.header li {
     list-style: none;
     display: inline-block;
     width: 100px;

@@ -12,8 +12,8 @@ import java.util.Optional;
 
 public interface BookRepository extends JpaRepository<Book, Long> {
 
-    @Override
-    Page<Book> findAll(Pageable pageable);
+    @Query("select b from Book b order by b.id desc")
+    List<Book> findAllByOrder(Pageable pageable);
 
     @Query("select b from Book b where b.bookName like concat('%', :bookName, '%')")
     List<Book> findByBookName(@Param("bookName") String bookName);

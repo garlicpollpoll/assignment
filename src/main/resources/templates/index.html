@@ -56,8 +56,8 @@
 
 
 <div class="div-wrap">
-    <div class="div-container">
-        <a th:each="book : ${books}" th:href="@{/book/detail/{id}(id = ${book.id})}" href="/home" class="card-wrap">
+    <div class="div-container" th:each="book : ${books}">
+        <a th:href="@{/book/detail/{id}(id = ${book.id})}" href="/home" class="card-wrap">
             <div class="card" style="width: 18rem;">
                 <img src="image/8080 그린 버전.PNG" class="card-img-top" alt="..." th:src="${book.url}">
                 <div class="card-body">
@@ -69,5 +69,18 @@
         </a>
     </div>
 </div>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" th:href="@{/(page=1)}"><<</a>
+        </li>
+        <li class="page-item" th:each="page : ${pageCount}"><a class="page-link" th:href="@{/(page=${page.value})}" th:text="${page.value}">1</a></li>
+        <li class="page-item">
+            <a class="page-link" th:href="@{/(page=${lastPage})}">>></a>
+        </li>
+    </ul>
+</nav>
+
 </body>
 </html>
