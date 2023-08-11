@@ -25,7 +25,6 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
-# TODO AWS accessKey, secretKey 바꿔야함
 cloud:
   aws:
     credentials:
