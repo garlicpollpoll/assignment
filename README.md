@@ -17,7 +17,8 @@
 <img src="https://github.com/garlicpollpoll/assignment/assets/86602266/f3e82c25-5b4a-4209-9ea1-410de1ab3d82">
 
 # 📜AWS 구성 내역
-<img src="https://github.com/garlicpollpoll/assignment/assets/86602266/f153dedc-fed2-4dd8-87d2-52c95c4ba7ec">
+<img src="https://github.com/garlicpollpoll/assignment/assets/86602266/a4a8e280-1151-4223-8594-355a35a580ce">
+
 
 # 📜시스템 구성도
 <img src="https://github.com/garlicpollpoll/assignment/assets/86602266/3458e9bd-7907-4d4c-8bfd-ffcfe5665815">
